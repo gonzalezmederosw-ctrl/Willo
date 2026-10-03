@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Willo Personal Training</title>
+<style>
+:root{box-sizing:border-box;--bg:#0b0e14;--card:#161b26;--line:#252c3b;--y:#ffd60a;--tx:#f4f6fa;--mu:#9aa3b5;--ok:#2ecc71;--no:#ff5c5c;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:#05070b;color:var(--tx);font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+#app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);position:relative;padding-bottom:78px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(11,14,20,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header h1{flex:1;font-size:18px;margin:0;text-align:center}
+.ib{background:var(--card);border:1px solid var(--line);color:var(--tx);border-radius:10px;min-width:38px;height:38px;font-size:16px;cursor:pointer;font-weight:700}
+.logo{font-style:italic;font-weight:900;color:var(--y);font-size:26px;letter-spacing:-1px;transform:skew(-8deg)}
+main{padding:16px}
+.hero{margin:-16px -16px 16px;padding:60px 20px 28px;background:linear-gradient(180deg,rgba(11,14,20,.2),var(--bg)),radial-gradient(circle at 70% 20%,#27407a,#0b0e14 70%)}
+.hero h2{font-size:34px;line-height:1.05;margin:80px 0 12px;font-weight:900}
+.hero h2 span{color:var(--y)}
+.btn{display:block;width:100%;background:var(--y);color:#111;border:0;border-radius:12px;padding:14px;font-weight:800;font-size:16px;cursor:pointer;text-align:center;text-decoration:none;margin-top:10px}
+.btn.ghost{background:var(--card);color:var(--tx);border:1px solid var(--line)}
+.btn.wa{background:#25d366;color:#fff}
+.btn:disabled{opacity:.4}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+.row{display:flex;align-items:center;gap:12px}
+.grow{flex:1}
+.mu{color:var(--mu);font-size:13px}
+.ico{width:44px;height:44px;border-radius:12px;background:#2a2610;display:grid;place-items:center;font-size:22px;flex:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;cursor:pointer;font-weight:600;font-size:14px}
+.tile b{display:block;font-size:24px;margin-bottom:4px}
+.price{border:2px solid var(--y);border-radius:14px;padding:14px;margin-bottom:10px;background:var(--card)}
+.price .p{font-size:22px;font-weight:900;color:var(--y)}
+h3{margin:18px 0 8px;font-size:17px}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;display:flex;background:rgba(15,19,28,.97);border-top:1px solid var(--line);padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px));z-index:6}
+nav button{flex:1;background:none;border:0;color:var(--mu);font-size:11px;cursor:pointer}
+nav button i{display:block;font-style:normal;font-size:20px}
+nav button.on{color:var(--y);font-weight:700}
+label{display:block;font-size:13px;color:var(--mu);margin:12px 0 4px}
+input,select,textarea{width:100%;background:#0f131c;border:1px solid var(--line);color:var(--tx);border-radius:10px;padding:12px;font-size:16px;font-family:inherit}
+.steps{display:flex;justify-content:space-between;margin-bottom:14px}
+.steps span{width:30px;height:30px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:13px;font-weight:700}
+.steps span.on{background:var(--y);color:#111}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--tx);cursor:pointer;font-size:14px}
+.chip.on{background:var(--y);color:#111;font-weight:700;border-color:var(--y)}
+.chip:disabled{opacity:.3;text-decoration:line-through}
+.stars{color:var(--y);letter-spacing:2px}
+.badge{font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;background:var(--y);color:#111}
+.badge.ok{background:var(--ok);color:#fff}.badge.no{background:var(--no);color:#fff}
+.sm{padding:9px 12px;font-size:13px;width:auto;margin:0;border-radius:9px;flex:1}
+.tabs{display:flex;background:var(--card);border-radius:12px;padding:4px;margin-bottom:12px}
+.tabs button{flex:1;border:0;background:none;color:var(--mu);padding:9px;border-radius:9px;font-weight:700;cursor:pointer}
+.tabs button.on{background:var(--y);color:#111}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gal div{aspect-ratio:1;border-radius:12px;display:grid;place-items:center;font-size:40px;background:linear-gradient(135deg,#1c2540,#2a2610);overflow:hidden}
+.gal img{width:100%;height:100%;object-fit:cover}
+.map{height:150px;border-radius:14px;background:repeating-linear-gradient(45deg,#16202e,#16202e 14px,#1a2636 14px,#1a2636 28px);display:grid;place-items:center;font-size:30px;text-align:center}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9;display:flex;justify-content:center}
+.sheet>div{width:100%;max-width:430px;background:var(--bg);padding:20px;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+</style></head><body><div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+const WA="491734534962",$=s=>document.querySelector(s);
+const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const iso=o=>{const d=new Date();d.setDate(d.getDate()+o);return d.toISOString().slice(0,10)};
+let S={lang:"de",scr:"home",step:1,b:{svc:null,date:null,time:null},tab:"req",done:null,menu:false,imgs:[]};
+const L=(d,e)=>S.lang==="de"?d:e;
+let R=null;try{R=JSON.parse(localStorage.getItem("willo"))}catch(e){}
+if(!R)R=[{id:1,name:"Marco Rossi",svc:"pt",date:iso(1),time:"10:00",status:"new",phone:"+49 170 0000001",email:"marco@example.com"},
+{id:2,name:"Laura Schmidt",svc:"online",date:iso(2),time:"18:00",status:"new",phone:"+49 170 0000002",email:"laura@example.com"},
+{id:3,name:"Daniel Weber",svc:"out",date:iso(4),time:"09:00",status:"ok",phone:"+49 170 0000003",email:"daniel@example.com"}];
+R=R.filter(r=>![1,2,3].includes(r.id));
+const save=()=>{try{localStorage.setItem("willo",JSON.stringify(R))}catch(e){}};
+const SV={pt:{i:"🏋️",n:()=>"Personal Training",d:()=>L("Individuell. Effektiv. Persönlich.","Individual. Efectivo. Personal.")},
+online:{i:"💻",n:()=>L("Online Training","Entrenamiento online"),d:()=>L("Flexibel. Von überall.","Flexible. Desde cualquier lugar.")},
+out:{i:"🌳",n:()=>L("Outdoor Training","Entrenamiento al aire libre"),d:()=>L("Frische Luft. Mehr Motivation.","Aire fresco. Más motivación.")}};
+const PR=[{n:()=>L("Einzeltraining","Sesión individual"),p:40,c:1,d:()=>L("60 Minuten · ab 40 € pro Einheit · ideal für den Einstieg","60 minutos · desde 40 € por sesión · ideal para empezar")},
+{n:()=>L("5er Paket","Paquete de 5"),p:184,c:5,d:()=>L("5 × 60 Min · spare 8 % · 36,80 € pro Einheit","5 × 60 min · ahorra 8 % · 36,80 € por sesión")},
+{n:()=>L("10er Paket","Paquete de 10"),p:344,c:10,d:()=>L("10 × 60 Min · spare 14 % · 34,40 € pro Einheit","10 × 60 min · ahorra 14 % · 34,40 € por sesión")},
+{n:()=>L("Monatsabo","Suscripción mensual"),p:384,c:12,d:()=>L("12 Einheiten pro Monat · spare 20 % · 32 € pro Einheit","12 sesiones al mes · ahorra 20 % · 32 € por sesión")}];
+const RV=[["Anna S.",L=>L("„Willo ist ein großartiger Trainer! Er motiviert, geht auf meine Ziele ein und bringt mich wirklich weiter.“","“¡Willo es un entrenador genial! Motiva, se adapta a mis metas y me hace avanzar de verdad.”")],
+["Marco L.",L=>L("„Professionell, freundlich und sehr kompetent. Das Training macht wirklich Spaß!“","“Profesional, amable y muy competente. ¡Entrenar es muy divertido!”")],
+["Sofia R.",L=>L("„Dank Willo habe ich mehr Energie, mehr Selbstvertrauen und fühle mich viel stärker.“","“Gracias a Willo tengo más energía, más confianza y me siento mucho más fuerte.”")]];
+const NAV=[["home","🏠","Start"],["services","🏋️","Services"],["book","📅",L("Buchen","Reservar")],["contact","✉️",L("Kontakt","Contacto")],["admin","👤","Admin"]];
+const TITLES=()=>({profile:L("Über mich","Perfil"),services:L("Unsere Services","Servicios"),prices:L("Preise","Precios"),book:L("Termin buchen","Reservar cita"),contact:L("Kontakt","Contacto"),location:L("Standort","Ubicación"),reviews:L("Kundenstimmen","Testimonios"),gallery:L("Galerie","Galería"),admin:"Admin Panel",faq:"FAQ"});
+const fd=d=>new Date(d+"T12:00").toLocaleDateString(S.lang==="de"?"de-DE":"es-ES",{weekday:"short",day:"numeric",month:"short"});
+const wa=t=>`https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+function go(s){if(s==="book")loadSlots();S.scr=s;S.menu=false;render();scrollTo(0,0)}
+function render(){
+ const main=NAV.some(n=>n[0]===S.scr),t=TITLES()[S.scr];
+ $("#app").innerHTML=`<header>${main&&S.scr==="home"||main&&!t?`<span class="logo">Willo</span><h1></h1>`:`<button class="ib" onclick="go('home')">‹</button><h1>${t||""}</h1>`}
+ <button class="ib" onclick="S.lang=S.lang==='de'?'es':'de';render()">${S.lang==="de"?"DE|<span style='opacity:.5'>ES</span>":"<span style='opacity:.5'>DE</span>|ES"}</button>
+ <button class="ib" onclick="S.menu=true;render()">☰</button></header><main>${V[S.scr]()}</main>
+ <nav>${NAV.map(n=>`<button class="${S.scr===n[0]?"on":""}" onclick="go('${n[0]}')"><i>${n[1]}</i>${n[2]}</button>`).join("")}</nav>
+ ${S.menu?`<div class="sheet" onclick="S.menu=false;render()"><div onclick="event.stopPropagation()"><h3>Menu</h3>${[["home","🏠","Start"],["profile","🧑‍🏫",TITLES().profile],["services","🏋️","Services"],["prices","💶",TITLES().prices],["book","📅",TITLES().book],["location","📍",TITLES().location],["reviews","⭐",TITLES().reviews],["gallery","📷",TITLES().gallery],["faq","❓","FAQ"],["contact","✉️",TITLES().contact],["admin","⚙️","Admin"]].map(m=>`<div class="card row" onclick="go('${m[0]}')"><span>${m[1]}</span><b>${m[2]}</b></div>`).join("")}</div></div>`:""}`;
+}
+const V={
+home:()=>`<div class="hero"><div class="logo" style="font-size:44px">Willo</div><div style="font-weight:800;letter-spacing:1px">PERSONAL TRAINING</div>
+<h2>${L("DISZIPLIN<br><span>HEUTE.</span><br>ERGEBNISSE<br><span>MORGEN.</span>","DISCIPLINA<br><span>HOY.</span><br>RESULTADOS<br><span>MAÑANA.</span>")}</h2>
+<b>${L("Personal Training in München","Personal Training en Múnich")}</b><div class="mu">${L("Deine Ziele. Mein Coaching.","Tus metas. Mi coaching.")}</div>
+<button class="btn" onclick="go('book')">📅 ${L("Jetzt Training buchen","Reservar entrenamiento")}</button>
+<a class="btn wa" href="${wa(L("Hallo Willo, ich interessiere mich für ein Training.","Hola Willo, me interesa un entrenamiento."))}" target="_blank" rel="noopener">WhatsApp</a></div>
+<div class="grid2" style="margin-bottom:14px">${[["💶",L("ab 40 €","desde 40 €")],["🎯",L("3 Trainingsarten","3 tipos de entreno")],["📍","München"],["🎁",L("Erstberatung gratis","1ª consulta gratis")]].map(x=>`<div class="card row" style="margin:0"><span>${x[0]}</span><b style="font-size:13px">${x[1]}</b></div>`).join("")}</div>
+<h3 style="margin-top:0">${L("Was ist dein Ziel?","¿Cuál es tu meta?")}</h3>${[["🔥",L("Abnehmen","Perder peso"),L("Fett verbrennen, Ausdauer aufbauen","Quemar grasa y ganar resistencia")],["💪",L("Muskelaufbau","Ganar músculo"),L("Kraft & Definition gezielt trainieren","Fuerza y definición con plan")],["❤️",L("Fitness & Gesundheit","Forma y salud"),L("Mehr Energie im Alltag","Más energía en tu día a día")]].map(x=>`<div class="card row" style="cursor:pointer" onclick="go('book')"><span class="ico">${x[0]}</span><div class="grow"><b>${x[1]}</b><div class="mu">${x[2]}</div></div>›</div>`).join("")}
+<div class="grid2">${[["profile","🧑‍🏫",L("Über mich","Perfil")],["services","🏋️","Services"],["prices","💶",L("Preise","Precios")],["reviews","⭐",L("Kundenstimmen","Testimonios")],["gallery","📷",L("Galerie","Galería")],["location","📍","München"],["faq","❓","FAQ"],["contact","✉️",L("Kontakt","Contacto")]].map(x=>`<div class="tile" onclick="go('${x[0]}')"><b>${x[1]}</b>${x[2]}</div>`).join("")}</div>
+<h3 style="text-align:center;color:var(--y);font-style:italic">${L("FIT IN MÜNCHEN. FIT FÜR DEIN LEBEN.","EN FORMA EN MÚNICH. EN FORMA PARA TU VIDA.")}</h3>`,
+profile:()=>`<div class="card" style="text-align:center"><div style="width:110px;height:110px;margin:auto;border-radius:50%;background:var(--y);color:#111;display:grid;place-items:center;font-size:40px;font-weight:900">WG</div>
+<h2 style="margin:12px 0 2px">Willian González Mederos</h2><div class="logo" style="font-size:22px">Willo</div><div class="mu">Personal Trainer · München</div></div>
+<p>${L("Ich bin Willian, dein Personal Trainer in München. Mit jahrelanger Erfahrung als Leichtathletik-Trainer und Leidenschaft für Sport helfe ich dir, deine Ziele zu erreichen – egal ob Gewichtsverlust, Muskelaufbau oder mehr Fitness und Gesundheit.","Soy Willian, tu entrenador personal en Múnich. Con años de experiencia como entrenador de atletismo y pasión por el deporte, te ayudo a alcanzar tus metas: pérdida de peso, masa muscular o más forma física y salud.")}</p>
+${[["🎓",L("Abschluss: Lic. in Sport und Körperkultur (in Kuba)","Título: Lic. en Deporte y Cultura Física (Cuba)")],["🏅",L("Erfahrung: Leichtathletik-Trainer, Fitness, funktionelles Training","Experiencia: entrenador de atletismo, fitness y entrenamiento funcional")],["🎯",L("Meine Ziele: Deine beste Version erreichen!","Mi meta: ¡que logres tu mejor versión!")]].map(x=>`<div class="card row"><span class="ico">${x[0]}</span><span>${x[1]}</span></div>`).join("")}
+<button class="btn" onclick="go('contact')">${L("Kontakt aufnehmen","Ponerse en contacto")}</button>`,
+services:()=>Object.entries(SV).map(([k,v])=>`<div class="card row" onclick="S.b.svc='${k}';S.step=2;go('book')" style="cursor:pointer"><span class="ico">${v.i}</span><div class="grow"><b>${v.n()}</b><div class="mu">${v.d()}</div><div style="color:var(--y);font-size:13px;font-weight:700">${L("ab","desde")} 40 €</div></div>›</div>`).join("")+`<button class="btn ghost" onclick="go('prices')">💶 ${L("Preise ansehen","Ver precios")}</button>`,
+prices:()=>`<h2 style="margin:0 0 12px;text-align:center">${L("Ab","Desde")} <span style="color:var(--y)">40 €</span> ${L("pro Einheit","por sesión")}</h2>`+PR.map((p,i)=>`<div class="price" style="cursor:pointer" onclick="S.b.pk=${i};S.step=S.b.svc?2:1;go('book')"><div class="row"><b class="grow">${p.n()}</b><span class="p">${p.p} €</span></div><div class="mu">${p.d()}</div></div>`).join("")+`<div class="card"><b>🎁 ${L("Kostenlose Erstberatung","Primera consulta gratuita")}</b><div class="mu">${L("Gemeinsam besprechen wir deine Ziele und erstellen einen individuellen Plan.","Hablamos de tus metas y creamos un plan individual.")}</div></div>
+<button class="btn" onclick="go('book')">${L("Jetzt buchen","Reservar ahora")}</button><button class="btn ghost" disabled>💳 ${L("Online bezahlen – bald mit Stripe","Pago online – próximamente con Stripe")}</button>`,
+book:()=>{
+ if(S.done){const r=S.done;return `<div class="card" style="text-align:center"><div style="font-size:50px">✅</div><h2>${L("Anfrage gesendet!","¡Solicitud enviada!")}</h2><p>${SV[r.svc].n()}<br><b>${fd(r.date)} · ${r.time}</b></p><div class="mu">${DB?L("Willo bestätigt deinen Termin in Kürze.","Willo confirmará tu cita en breve."):L("Bitte sende die Anfrage zusätzlich per WhatsApp, damit Willo sie erhält.","Envía también la solicitud por WhatsApp para que Willo la reciba.")}</div><h3>${r.total} €</h3></div>
+ <a class="btn wa" target="_blank" rel="noopener" href="${wa(`Hallo Willo, ich habe ${SV[r.svc].n()} am ${r.date} um ${r.time} angefragt. – ${r.name}`)}">${L("Per WhatsApp bestätigen","Confirmar por WhatsApp")}</a><button class="btn ghost" onclick="S.done=null;S.step=1;S.b={};go('home')">OK</button>`}
+ const b=S.b,st=S.step;let h=`<div class="steps">${[L("Service","Servicio"),L("Datum","Fecha"),L("Zeit","Hora"),"Details"].map((x,i)=>`<div style="text-align:center"><span class="${st>i?"on":""}" style="margin:auto">${i+1}</span><div class="mu" style="font-size:11px">${x}</div></div>`).join("")}</div>`;
+ if(st===1)h+=Object.entries(SV).map(([k,v])=>`<div class="card row" style="cursor:pointer;${b.svc===k?"border-color:var(--y)":""}" onclick="S.b.svc='${k}';S.step=2;render()"><span class="ico">${v.i}</span><b>${v.n()}</b></div>`).join("");
+ if(st===2){let c="";for(let i=1;i<=21;i++){const d=iso(i);if(new Date(d+"T12:00").getDay()===0)continue;c+=`<button class="chip ${b.date===d?"on":""}" onclick="S.b.date='${d}';S.step=3;render()">${fd(d)}</button>`}h+=`<label>${L("Datum wählen","Datum wählen".replace("Datum wählen","Fecha"))}</label><div class="chips">${c}</div>`}
+ if(st===3){const tk=R.filter(r=>r.date===b.date&&r.status!=="no").map(r=>r.time).concat(SLOTS.filter(x=>x.startsWith(b.date+"_")).map(x=>x.slice(11,13)+":00"));let c="";for(let x=8;x<=19;x++){const t=String(x).padStart(2,"0")+":00";c+=`<button class="chip ${b.time===t?"on":""}" ${tk.includes(t)?"disabled":""} onclick="S.b.time='${t}';S.step=4;render()">${t}</button>`}h+=`<label>${fd(b.date)} – ${L("Zeit wählen","Hora")}</label><div class="chips">${c}</div>`}
+ if(st===4)h+=`<div class="card"><b>${SV[b.svc].n()}</b><div class="mu">${fd(b.date)} · ${b.time}</div></div><label>${L("Paket","Paquete")}</label><div class="chips">${PR.map((p,i)=>`<button class="chip ${(b.pk||0)===i?"on":""}" onclick="S.b.pk=${i};render()">${p.n()}<br>${p.p} €</button>`).join("")}</div><div class="card" style="margin-top:12px">💶 <b>${PR[b.pk||0].p} €</b> <span class="mu">${L("Gesamt","Total")}</span></div>${form()}<button class="btn" onclick="sendBook()">${L("Termin anfragen","Solicitar cita")}</button><button class="btn ghost" onclick="sendBook(true)">💳 ${L("Jetzt mit Karte bezahlen","Pagar con tarjeta")}</button><p class="mu">${L("Kostenlose Stornierung bis 24 Std. vorher.","Cancelación gratuita hasta 24 h antes.")}</p>`;
+ if(st>1)h+=`<button class="btn ghost" onclick="S.step--;render()">‹ ${L("Zurück","Atrás")}</button>`;return h},
+contact:()=>`<h3 style="margin-top:0">${L("Schreib mir!","¡Escríbeme!")}</h3>
+<a class="card row" style="text-decoration:none;color:inherit" href="${wa("Hallo Willo!")}" target="_blank" rel="noopener"><span class="ico" style="background:#25d366">💬</span><div class="grow"><b>WhatsApp</b><div class="mu">+49 173 453 4962</div></div>›</a>
+<a class="card row" style="text-decoration:none;color:inherit" href="tel:+491734534962"><span class="ico">📞</span><div class="grow"><b>${L("Telefon","Teléfono")}</b><div class="mu">+49 173 453 4962</div></div>›</a>
+<a class="card row" style="text-decoration:none;color:inherit" href="mailto:gonzalezmederosw@gmail.com"><span class="ico">✉️</span><div class="grow"><b>E-Mail</b><div class="mu">gonzalezmederosw@gmail.com</div></div>›</a>
+<h3>${L("Kontaktformular","Formulario de contacto")}</h3>${form()}<button class="btn" onclick="sendMsg()">${L("Senden","Enviar")}</button>`,
+location:()=>`<div class="map">📍<br><b>München</b></div><div class="card" style="margin-top:12px"><b>München</b><div class="mu">${L("Ich trainiere in München und Umgebung. Sprechen Sie mich gerne für individuelle Treffpunkte an.","Entreno en Múnich y alrededores. Escríbeme para acordar puntos de encuentro.")}</div></div>
+<h3>${L("Umgebung","Zonas")}</h3>${[L("Stadt München","Ciudad de Múnich"),L("Parks & Grünflächen","Parques y zonas verdes"),L("Fitnessstudio (bei Bedarf)","Gimnasio (si es necesario)")].map(x=>`<div class="card">✔ ${x}</div>`).join("")}`,
+faq:()=>[[L("Wie läuft die Erstberatung ab?","¿Cómo es la primera consulta?"),L("Kostenlos: Wir besprechen deine Ziele und erstellen einen individuellen Plan.","Gratuita: hablamos de tus metas y creamos un plan individual.")],
+[L("Kann ich stornieren?","¿Puedo cancelar?"),L("Ja, kostenfrei bis 24 Stunden vor dem Termin.","Sí, gratis hasta 24 horas antes de la cita.")],
+[L("Wo findet das Training statt?","¿Dónde se entrena?"),L("In München und Umgebung: Parks, Grünflächen oder Fitnessstudio nach Absprache.","En Múnich y alrededores: parques, zonas verdes o gimnasio a convenir.")],
+[L("Wie funktioniert Online Training?","¿Cómo funciona el entreno online?"),L("Per Videocall, live mit Feedback – flexibel von überall.","Por videollamada, en directo y con feedback, desde cualquier lugar.")],
+[L("Was soll ich mitbringen?","¿Qué debo llevar?"),L("Sportkleidung, Sportschuhe und eine Flasche Wasser.","Ropa y zapatillas deportivas y una botella de agua.")],
+[L("Wie bezahle ich?","¿Cómo pago?"),L("Aktuell nach Absprache; Kartenzahlung mit Stripe folgt in Kürze.","Por ahora a convenir; el pago con tarjeta vía Stripe llegará pronto.")]].map(x=>`<details class="card"><summary style="cursor:pointer;font-weight:700">${x[0]}</summary><p class="mu" style="margin-bottom:0">${x[1]}</p></details>`).join("")+`<a class="btn wa" href="${wa(L("Hallo Willo, ich habe eine Frage.","Hola Willo, tengo una pregunta."))}" target="_blank" rel="noopener">WhatsApp</a>`,
+reviews:()=>RV.map(r=>`<div class="card"><b>${r[0]}</b> <span class="stars">★★★★★</span><p>${r[1](L)}</p><div class="mu">– München</div></div>`).join("")+`<button class="btn" onclick="go('book')">${L("Jetzt starten","Empieza ahora")}</button>`,
+gallery:()=>`<div class="gal">${S.imgs.map(s=>`<div><img src="${s}" alt=""></div>`).join("")}${["🏋️","🏃","🧘","💪","🌳","⚡"].slice(S.imgs.length).map(e=>`<div>${e}</div>`).join("")}</div>
+<label class="btn" style="cursor:pointer">📷 ${L("Foto hinzufügen","Añadir foto")}<input type="file" accept="image/*" hidden onchange="addImg(this)"></label><p class="mu">${L("Fotos bleiben nur in dieser Sitzung.","Las fotos solo se mantienen en esta sesión.")}</p>`,
+admin:()=>ADM?adminPanel():gate(),
+adminPanel:()=>{const tb=[["req",L("Anfragen","Solicitudes")],["cal",L("Kalender","Calendario")],["cli",L("Kunden","Clientes")]];
+ let h=`<div class="tabs">${tb.map(t=>`<button class="${S.tab===t[0]?"on":""}" onclick="S.tab='${t[0]}';render()">${t[1]}</button>`).join("")}</div>`;
+ if(S.tab==="req")h+=stats();const bd=r=>`<span class="badge ${r.status}">${{new:L("Neu","Nuevo"),ok:L("Bestätigt","Confirmado"),no:L("Abgelehnt","Rechazado")}[r.status]}</span>`;
+ const line=r=>`${r.svc==="msg"?"✉️ "+L("Nachricht","Mensaje"):SV[r.svc].n()}${r.date?" · "+fd(r.date)+" "+r.time:""}${r.total?" · "+r.total+" €":""}${r.paid?" · 💳":""}`;
+ if(S.tab==="req")h+=R.length?[...R].reverse().map(r=>`<div class="card"><div class="row"><b class="grow">${esc(r.name)}</b>${bd(r)}</div><div class="mu">${line(r)}<br>${esc(r.phone)} · ${esc(r.email)}${r.msg?`<br>“${esc(r.msg)}”`:""}</div>
+ <div class="row" style="margin-top:10px"><button class="btn sm" onclick="setS(${r.id},'ok')">${L("Bestätigen","Confirmar")}</button><button class="btn sm ghost" onclick="setS(${r.id},'no')">${L("Ablehnen","Rechazar")}</button><button class="btn sm ghost" onclick="del(${r.id})">🗑</button></div></div>`).join(""):`<p class="mu">${L("Keine Anfragen.","Sin solicitudes.")}</p>`;
+ if(S.tab==="cal"){const c=R.filter(r=>r.status==="ok"&&r.date).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));h+=c.length?c.map(r=>`<div class="card row"><b>${fd(r.date)}<br>${r.time}</b><div class="grow">${esc(r.name)}<div class="mu">${SV[r.svc].n()}</div></div></div>`).join(""):`<p class="mu">${L("Keine bestätigten Termine.","Sin citas confirmadas.")}</p>`}
+ if(S.tab==="cli"){const m={};R.forEach(r=>{(m[r.name]=m[r.name]||[]).push(r)});h+=Object.entries(m).map(([n,a])=>`<div class="card row"><span class="ico">${esc(n[0])}</span><div class="grow"><b>${esc(n)}</b><div class="mu">${esc(a[0].phone)} · ${a.length}×</div></div><a class="ib" style="display:grid;place-items:center;text-decoration:none" href="https://wa.me/${a[0].phone.replace(/\D/g,"")}" target="_blank" rel="noopener">💬</a></div>`).join("")}
+ return h+`<p class="mu">${DB?"🟢 ":"🔴 "}${L("Datenbank","Base de datos")} ${DB?L("verbunden","conectada"):L("nicht verbunden","no conectada")} <button class="btn sm ghost" style="display:inline-block;flex:none;margin-left:8px" onclick="exportCsv()">⬇ CSV</button> <button class="btn sm ghost" style="display:inline-block;flex:none" onclick="logout()">⎋</button></p>`}};
+const stats=()=>{const o=R.filter(r=>r.status==="new").length,c=R.filter(r=>r.status==="ok"),rev=c.reduce((a,r)=>a+(r.total||0),0);const k=(n,t)=>`<div class="card" style="margin:0;text-align:center"><b style="font-size:26px;color:var(--y)">${n}</b><div class="mu">${t}</div></div>`;return `<div class="grid2" style="margin-bottom:12px">${k(o,L("Neue Anfragen","Nuevas"))}${k(c.length,L("Bestätigt","Confirmadas"))}</div>${rev?`<div class="card">💶 ${L("Bestätigter Umsatz","Ingresos confirmados")}: <b>${rev} €</b></div>`:""}`};
+function pay(){alert(L("Stripe wird bald aktiviert.","Stripe se activará pronto."))}
+const form=()=>`<label>Name *</label><input id="fn" autocomplete="name"><label>${L("Telefon","Teléfono")} *</label><input id="fp" type="tel" autocomplete="tel"><label>E-Mail *</label><input id="fe" type="email" autocomplete="email"><label>${L("Nachricht","Mensaje")}</label><textarea id="fm" rows="3"></textarea><div id="err" style="color:var(--no);font-size:13px;margin-top:6px"></div>`;
+function vals(){const g=i=>$("#"+i).value.trim(),o={name:g("fn"),phone:g("fp"),email:g("fe"),msg:g("fm")};
+ if(!o.name||!o.phone||!/^\S+@\S+\.\S+$/.test(o.email)){$("#err").textContent=L("Bitte Name, Telefon und gültige E-Mail angeben.","Indica nombre, teléfono y un email válido.");return null}return o}
+async function sendBook(pay){const v=vals();if(!v)return;
+if(pay){if(!sb){$("#err").textContent="Supabase/Stripe nicht konfiguriert";return}
+const {data,error}=await sb.functions.invoke("checkout",{body:{...v,svc:S.b.svc,date:S.b.date,time:S.b.time,pk:S.b.pk||0}});
+if(error||!data||!data.url){$("#err").textContent=L("Zeit vergeben oder Fehler. Bitte erneut versuchen.","Hora ocupada o error. Inténtalo de nuevo.");loadSlots();return}
+location.href=data.url;return}const r={id:Date.now(),...v,svc:S.b.svc,date:S.b.date,time:S.b.time,pk:S.b.pk||0,total:PR[S.b.pk||0].p,status:"new"};R.push(r);remote(r);S.done=r;render();scrollTo(0,0)}
+function sendMsg(){const v=vals();if(!v)return;{const m={id:Date.now(),...v,svc:"msg",status:"new"};R.push(m);remote(m)}alert(L("Danke! Ich melde mich bald.","¡Gracias! Te responderé pronto."));go("home")}
+const SB_URL="https://rntmbpdadjhvlfpcwekp.supabase.co",SB_KEY="sb_publishable_1RpWs_avZ0PLBTJYjXo2TQ_NTIlEaZG";
+const sb=(window.supabase&&!SB_URL.includes("YOUR"))?supabase.createClient(SB_URL,SB_KEY):null;
+let DB=!!sb,ADM=false,READY=false,SLOTS=[];
+async function remote(q){save();if(!sb)return;const {error}=await sb.from("requests").insert({name:q.name,phone:q.phone,email:q.email,msg:q.msg||null,svc:q.svc,date:q.date||null,time:q.time||null,pk:q.pk??null,total:q.total??null});
+ if(error){console.error(error);alert(error.code==="23505"?L("Diese Zeit ist leider schon vergeben. Bitte wähle eine andere.","Esa hora ya está ocupada. Elige otra."):L("Fehler beim Senden. Bitte per WhatsApp melden.","Error al enviar. Escríbenos por WhatsApp."));S.done=null;S.step=q.date?3:1;go("book")}else loadSlots()}
+async function loadSlots(){if(!sb)return;const {data}=await sb.rpc("taken_slots");SLOTS=(data||[]).map(x=>x.d+"_"+x.t.slice(0,2)+"00");if(S.scr==="book"&&S.step===3)render()}
+async function loadAdmin(){const {data}=await sb.from("requests").select("*").order("created_at");R=data||[];if(S.scr==="admin")render()}
+async function setS(id,st){const {error}=await sb.from("requests").update({status:st}).eq("id",id);if(!error){await loadAdmin();loadSlots()}}
+async function checkAdmin(){if(!sb)return;const {data:{session}}=await sb.auth.getSession();ADM=false;if(session){const {data}=await sb.from("admins").select("email").limit(1);ADM=!!(data&&data.length)}if(ADM)await loadAdmin();READY=true;render()}
+async function login(){const e=$("#ae").value.trim(),p=$("#ap").value;const {error}=await sb.auth.signInWithPassword({email:e,password:p});if(error){$("#aerr").textContent=L("Login fehlgeschlagen.","Login incorrecto.");return}checkAdmin()}
+async function logout(){await sb.auth.signOut();ADM=false;R=[];render()}
+const gate=()=>!READY?`<p class="mu">…</p>`:!sb?`<div class="card"><b>⚙️ Supabase</b><p class="mu">${L("Noch nicht konfiguriert (SB_URL / SB_KEY in index.html).","Aún sin configurar (SB_URL / SB_KEY en index.html).")}</p></div>`:`<div class="card"><h2 style="margin-top:0">🔒 Admin-Login</h2><label>E-Mail</label><input id="ae" type="email" autocomplete="username"><label>${L("Passwort","Contraseña")}</label><input id="ap" type="password" autocomplete="current-password"><div id="aerr" style="color:var(--no);font-size:13px;margin-top:6px"></div><button class="btn" onclick="login()">${L("Anmelden","Entrar")}</button></div>`;
+function exportCsv(){const rows=[["name","phone","email","service","date","time","total","status","paid","msg"],...R.map(q=>[q.name,q.phone,q.email,q.svc,q.date||"",q.time||"",q.total||"",q.status,q.paid?1:0,q.msg||""])];const csv=rows.map(a=>a.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(",")).join("\n");const l=document.createElement("a");l.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));l.download="willo-anfragen.csv";l.click()}
+if(/paid=1/.test(location.search)){history.replaceState(null,"",location.pathname);setTimeout(()=>alert(L("Zahlung erfolgreich – danke! Willo meldet sich bei dir.","¡Pago completado, gracias! Willo te contactará.")),400)}
+checkAdmin();loadSlots();setInterval(()=>{if(ADM&&S.scr==="admin")loadAdmin()},30000);
+async function del(id){await sb.from("requests").delete().eq("id",id);loadAdmin();loadSlots()}
+function addImg(i){const f=i.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{S.imgs.push(r.result);render()};r.readAsDataURL(f)}
+render();
+</script></body></html>
